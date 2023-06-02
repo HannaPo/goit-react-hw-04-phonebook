@@ -5,12 +5,16 @@ import { Wrapper, Item, Button } from './ContactList.styled';
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <Wrapper>
-      {contacts.map(contact => (
-        <Item key={contact.id}>{contact.name}: {contact.number}
+      {contacts.map(({ id, name, number }) => (
+        <Item key={id}>
+          {name}: {number}
           <Button
             type="button"
             aria-label="Delete contact"
-            onClick={() => onDeleteContact(contact.id)}><DeleteIcon/></Button>
+            onClick={() => onDeleteContact(id)}
+          >
+            <DeleteIcon />
+          </Button>
         </Item>
       ))}
     </Wrapper>
